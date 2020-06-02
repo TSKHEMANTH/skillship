@@ -1,0 +1,24 @@
+// How Many Numbers Are Smaller Than the Current Number//
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* smallerNumbersThanCurrent(int* nums, int numsSize, int* returnSize){
+int i,j,c,temp;
+    *returnSize=numsSize;
+    int *a=malloc(sizeof(int)*numsSize);
+    for(i=0;i<numsSize;i++)
+    {
+        temp=nums[i];
+        c=0;
+        for(j=0;j<numsSize;j++)
+        {
+            if(nums[j]<temp)
+            {
+                c++;
+            }
+        }
+        a[i]=c;
+    }
+    return a;
+}
