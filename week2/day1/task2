@@ -1,0 +1,45 @@
+//Self Dividing Numbers
+//A self-dividing number is a number that is divisible by every digit it contains.
+//Also, a self-dividing number is not allowed to contain the digit zero.
+//Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.
+
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* selfDividingNumbers(int left, int right, int* returnSize){
+    int i,j,r,k,n,c1,c2,arr[right],q=0;
+    int diff;
+    diff=right-left+1;
+    for(i=left;i<=right;i++)
+    {
+        k=i;
+        n=i;
+        c1=0;
+        c2=0;
+         while(n!=0)
+        {
+              r=n%10;
+            if(r!=0 && k%r==0)
+            {
+                c2++;
+            }
+            n=n/10;
+             c1++;
+        }
+        if(c1==c2)
+        {
+            arr[q]=i;
+            q++;
+        }
+    }
+    *returnSize=q;
+    int *returnarray=malloc(sizeof(int)*q);
+    for(j=0;j<q;j++)
+    {
+        returnarray[j]=arr[j];
+    }
+    
+    return returnarray;
+}
