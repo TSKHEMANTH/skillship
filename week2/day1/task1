@@ -1,0 +1,25 @@
+//Subtract the Product and Sum of Digits of an Integer
+//Given an integer number n, return the difference between the product of its digits and the sum of its digits.
+
+
+
+int subtractProductAndSum(int n){
+int r,p[n],q=0,i,prod=1,sum=0;
+    int t;
+    t=n;
+    while(n!=0)
+    {
+        r=n%10;
+        p[q]=r;
+        n=n/10;
+        q++;
+    }
+    for(i=0;i<q;i++)
+    {
+        prod=prod*p[i];
+        sum=sum+p[i];
+    }
+    int res;
+    res=prod-sum;
+    return res;
+}
