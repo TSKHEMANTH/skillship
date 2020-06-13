@@ -1,0 +1,36 @@
+//Reverse Vowels of a String
+//Write a function that takes a string as input and reverse only the vowels of a string.
+
+
+
+
+char * reverseVowels(char * s){
+    int i,j;
+    int s1,q=0;
+    s1=strlen(s);
+    if(s1!=0)
+    {
+    char a[s1];
+    for(i=0;i<s1;i++)
+    {
+        if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u' || s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U')
+        {
+            a[q]=s[i];
+            q++;
+        }
+    }
+    for(i=0;i<s1;i++)
+    {
+            if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u' || s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U')
+            {
+                s[i]=a[q-1];
+                q--;
+            }
+    }
+    return s;
+    }
+    else
+    {
+        return s;
+    }
+}
