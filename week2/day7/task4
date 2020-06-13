@@ -1,0 +1,23 @@
+// excel sheet column number
+// Given a column title as appear in an Excel sheet, return its corresponding column number.
+
+
+
+int titleToNumber(char * s){
+    int i,j;
+    int s1,q=0,sum=0;
+    s1=strlen(s);
+    char d[s1];
+    for(i=s1-1;i>=0;i--)
+    {
+        d[q]=s[i];
+        q++;
+    }
+    for(i=0;i<q;i++)
+    {
+        int a;
+        a=d[i];
+        sum=sum+(a-64)*pow(26,i);
+    }
+    return sum;
+}
