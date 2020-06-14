@@ -1,0 +1,24 @@
+//Minimum Moves to Equal Array Elements
+//Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1.
+
+
+
+int minMoves(int* nums, int numsSize){
+     int i,j,temp;
+     int n;
+    n=numsSize;
+    int k=nums[0];
+    for(i=1;i<n;i++)
+    {
+        if(nums[i]<k)
+        {
+            k=nums[i];
+        }
+    }
+    int sum=0;
+    for(i=0;i<n;i++)
+    {
+        sum+=nums[i]-k;
+    }
+    return sum;
+}
