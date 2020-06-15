@@ -1,0 +1,40 @@
+//Reverse Words in a String III
+/*Given a string, you need to reverse the order of characters in each word within a sentence
+while still preserving whitespace and initial word order.*/
+
+// getting address sanitizer issue while running the program in leetcode. but run successful in online compiler
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+    char s[100];
+    scanf("%[^\n]",s);
+    int g;
+    g=strlen(s);
+    char s2[g];
+    strcpy(s2, s);
+    char ch=' ';
+    strncat(s2, &ch, 1);
+    int i,j, l=strlen(s2),q=0,p=1;
+    int k[l];
+    k[0]=0;
+    char s1[l],h[l];
+    for(i=0;i<l;i++)
+    {
+        if(s2[i]==' ')
+        {
+            k[p]=i;
+            for(j=i-1;j>=k[p-1];j--)
+            {
+                s1[q]=s2[j];
+                q++;
+            }
+            s1[q++]=' ';
+            p++;
+        }
+    }
+    s1[q]='\0';
+    printf("%s", s1);
+}
