@@ -1,0 +1,117 @@
+//Add Two Numbers
+/*You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
+    struct ListNode *p=l1, *q=l2;
+    //(struct ListNode*)malloc(sizeof(struct ListNode));
+    int carry=0, sum,c1=0,c2=0,f=0;
+    while(l1!=NULL)
+    {
+        c1++;
+        l1=l1->next;
+    }
+   // printf("%d\n",c1);
+    while(l2!=NULL)
+    {
+        c2++;
+        l2=l2->next;
+    }
+    if(c1!=c2)
+    {
+    if(c1>c2)
+    {
+        int i;
+        for(i=c2;i<c1;i++)
+        {
+            //q->next=x;
+            append(&q,f);
+        }
+    }
+    else if(c2>c1)
+    {
+        int i;
+        for(i=c1;i<c2;i++)
+        {
+            //p->next=x;
+            append(&p,f);
+        }
+    }
+    }
+    //p->next=NULL;
+    //q->next=NULL;
+    struct ListNode *l3=NULL;
+    //(struct ListNode*)malloc(sizeof(struct ListNode));
+    while(p!=NULL && q!=NULL)
+    {
+        sum=add(carry,p->val,q->val);
+        carry=0;
+        if(sum>9)
+        {
+            carry=sum/10;
+            sum=sum%10;
+        }
+        p=p->next;
+        q=q->next;
+        //l3->val=sum;
+        //l3=l3->next;
+        //l3->next=NULL;
+        append(&l3,sum);
+        if(p==NULL && q==NULL && carry==1)
+        {
+            append(&l3,carry);
+        }
+    }
+    return l3;
+}
+int add(carry,val1,val2)
+{
+    int sum;
+    sum=carry+val1+val2;
+    if(carry==1)
+    {
+        carry=0;
+    }
+    return sum;
+}
+/* Given a reference (pointer to pointer) to the head 
+   of a list and an int, appends a new node at the end  */
+void append(struct ListNode** head_ref, int new_data) 
+{ 
+    /* 1. allocate node */
+    struct ListNode* new_node = (struct ListNode*) malloc(sizeof(struct ListNode)); 
+  
+    struct ListNode *last = *head_ref;  /* used in step 5*/
+   
+    /* 2. put in the data  */
+    new_node->val  = new_data; 
+  
+    /* 3. This new node is going to be the last node, so make next  
+          of it as NULL*/
+    new_node->next = NULL; 
+  
+    /* 4. If the Linked List is empty, then make the new node as head */
+    if (*head_ref == NULL) 
+    { 
+       *head_ref = new_node; 
+       return; 
+    }   
+       
+    /* 5. Else traverse till the last node */
+    while (last->next != NULL) 
+        last = last->next; 
+   
+    /* 6. Change the next of last node */
+    last->next = new_node; 
+    return;     
+} 
