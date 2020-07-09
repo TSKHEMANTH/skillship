@@ -1,0 +1,38 @@
+//Happy and Sets
+/*Once Happy was playing with his friends during his maths class. Seeing this, his teacher asked him to solve a problem. The teacher gave him a set of n positive integers and asked him to tell the sum of the product of elements of all the possible subsets.
+
+For e.g. Say, the teacher gave him a set {2, 3, 5}. The possible subsets of this set are {2}, {3}, {5}, {2, 3}, {2, 5}, {3, 5} and {2, 3, 5}. So Happy should report the answer as the sum of 2, 3, 5, 6 (2 * 3),  (2 * 5),  (3 * 5) and  (2 * 3 * 5) i.e.,  to the teacher.
+
+As the output of the problem can be large, so the teacher asked happy to report the answer modulo 1000000007.*/
+
+/*
+// Sample code to perform I/O:
+#include <stdio.h>
+
+int main(){
+	int num;
+	scanf("%d", &num);              			// Reading input from STDIN
+	printf("Input number is %d.\n", num);       // Writing output to STDOUT
+}
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+*/
+
+// Write your code here
+#include <stdio.h>
+int main()
+{
+	long long int n,i,a,prod=1,sum=0;
+	long long int mod;
+	mod=1000000007;
+	scanf("%lld",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%lld",&a);
+		prod=(prod*(a+1))%mod;
+	}
+	long long int ans;
+	ans=prod-1;
+	printf("%lld",ans);
+	return 0;
+}
